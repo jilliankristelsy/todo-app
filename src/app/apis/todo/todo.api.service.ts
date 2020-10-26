@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {TODO, X_API_KEY} from '@src/environments/environment';
+import {TODO} from '@src/environments/environment';
 import {Todo} from '@src/app/models/todo.model';
 
 @Injectable()
