@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Todo, TodoApi, TodoStatus} from '@src/app/models/todo.model';
 import {TodoApiService} from '@src/app/apis/todo/todo.api.service';
 import * as moment from 'moment';
+import {finalize} from 'rxjs/operators';
 
 @Component({
     selector: 'app-todo-list',
@@ -11,6 +12,7 @@ import * as moment from 'moment';
 export class TodoListComponent implements OnInit {
 
     public list: Todo[];
+    public isLoading: boolean;
 
     constructor(private todoApiService: TodoApiService) {
     }
@@ -21,7 +23,6 @@ export class TodoListComponent implements OnInit {
 
     }
 
-
      resetList() {
         this.list = [];
      }
@@ -30,11 +31,16 @@ export class TodoListComponent implements OnInit {
      * Initialize todo list
      */
     initializeList() {
+        this.isLoading = true;
         this.todoApiService.getList()
-            .subscribe((list) => {
+            .pipe(
+                finalize(() => this.isLoading = false)
+            )
+            .subscribe((list) => { // INFO: no error action
                 list.forEach((item) => {
                     this.list.push({
                         ...item,
+                        loading: false,
                         status: this.getStatusOfItem(item)
                     });
                 });
@@ -66,11 +72,15 @@ export class TodoListComponent implements OnInit {
      */
     finishTodoItem(todoId: string) {
         const todoItem = this.list.find((item) => item.id === todoId);
+        todoItem.loading = true;
         this.todoApiService.finishItem(todoId)
-            .subscribe((response) => {
+            .pipe(
+                finalize(() => todoItem.loading = false)
+            )
+            .subscribe((response) => { // INFO: no error action
                 if (response.status === 'success') {
                     todoItem.isComplete = true;
-                    todoItem.status = this.getStatusOfItem(todoItem); // could also just set to complete
+                    todoItem.status = TodoStatus.COMPLETE;
                 }
             });
     }

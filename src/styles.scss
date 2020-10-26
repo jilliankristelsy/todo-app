@@ -11,3 +11,36 @@ body {
 ul {
     padding: 0;
 }
+
+.loader { // w3schools
+    animation: spin 2s linear infinite;
+    border: 6px solid #645353;
+    border-top: 6px solid #b3afaf;
+    border-radius: 50%;
+    bottom: 0;
+    display: none;
+    height: 16px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+    z-index: 99;
+}
+
+@keyframes spin { //w3schools
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+// disable actions on component when loading
+.loading {
+    > .loader {
+        display: block;
+    }
+    :not(> .loader) {
+        opacity: 70%;
+        pointer-events: none;
+    }
+}

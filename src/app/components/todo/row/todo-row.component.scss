@@ -1,4 +1,8 @@
 :host {
+    .todo-row-container {
+        position: relative;
+    }
+
     .todo-row {
         align-items: center;
         background-color: #e4e2e8;

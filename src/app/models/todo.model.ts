@@ -6,6 +6,7 @@ export interface TodoApi {
 }
 
 export interface Todo extends TodoApi {
+    loading: boolean;
     status: TodoStatus;
 }
 

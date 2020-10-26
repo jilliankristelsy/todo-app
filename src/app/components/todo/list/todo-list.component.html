@@ -1,4 +1,8 @@
-<div class="list-container">
+<div class="list-container"
+     [class.loading]="isLoading"
+>
+    <div class="loader"></div>
+
     <ul class="list">
         <!--overdue-->
         <li *ngFor="let item of overdueList">

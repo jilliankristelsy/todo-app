@@ -1,9 +1,15 @@
-<div class="todo-row todo-row--{{data.status}}">
-    <input class="todo-row__action" type="checkbox"
-           [checked]="data.isComplete"
-           [disabled]="data.isComplete"
-           (change)="checkboxChanged()"
-    >
-    <span class="todo-row__description">{{data.description}}</span>
-    <span *ngIf="data.dueDate" class="todo-row__date">{{getFormattedDate(data.dueDate)}}</span>
+<div class="todo-row-container"
+     [class.loading]="data.loading"
+>
+    <div class="loader"></div>
+
+    <div class="todo-row todo-row--{{data.status}}">
+        <input class="todo-row__action" type="checkbox"
+               [checked]="data.isComplete"
+               [disabled]="data.isComplete"
+               (change)="checkboxChanged()"
+        >
+        <span class="todo-row__description">{{data.description}}</span>
+        <span *ngIf="data.dueDate" class="todo-row__date">{{getFormattedDate(data.dueDate)}}</span>
+    </div>
 </div>

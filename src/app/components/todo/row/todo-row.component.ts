@@ -2,6 +2,9 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Todo} from '@src/app/models/todo.model';
 import * as moment from 'moment';
 
+/**
+ * simple component to display todo item details
+ */
 @Component({
     selector: 'app-todo-row',
     templateUrl: 'todo-row.component.html',
