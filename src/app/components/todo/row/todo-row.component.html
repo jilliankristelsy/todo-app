@@ -1,6 +1,8 @@
 <div class="todo-row todo-row--{{data.status}}">
     <input class="todo-row__action" type="checkbox"
            [checked]="data.isComplete"
+           [disabled]="data.isComplete"
+           (change)="checkboxChanged()"
     >
     <p class="todo-row__description">{{data.description}}</p>
     <p *ngIf="data.dueDate" class="todo-row__date">{{getFormattedDate(data.dueDate)}}</p>

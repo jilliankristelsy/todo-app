@@ -1,7 +1,9 @@
 <div class="list-container">
     <ul class="list">
         <li *ngFor="let item of list">
-            <app-todo-row [data]="item"></app-todo-row>
+            <app-todo-row [data]="item"
+                          (finishTodo)="finishTodoItem($event)"
+            ></app-todo-row>
         </li>
     </ul>
 </div>

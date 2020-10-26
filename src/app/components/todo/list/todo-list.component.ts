@@ -60,4 +60,18 @@ export class TodoListComponent implements OnInit {
     isDateInPast(dateString: string): boolean {
         return moment(dateString).isBefore(moment());
     }
+
+    /**
+     * calls the API to complete the todo item
+     */
+    finishTodoItem(todoId: string) {
+        const todoItem = this.list.find((item) => item.id === todoId);
+        this.todoApiService.finishItem(todoId)
+            .subscribe((response) => {
+                if (response.status === 'success') {
+                    todoItem.isComplete = true;
+                    todoItem.status = this.getStatusOfItem(todoItem); // could also just set to complete
+                }
+            });
+    }
 }
