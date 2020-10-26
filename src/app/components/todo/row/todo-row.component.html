@@ -4,6 +4,6 @@
            [disabled]="data.isComplete"
            (change)="checkboxChanged()"
     >
-    <p class="todo-row__description">{{data.description}}</p>
-    <p *ngIf="data.dueDate" class="todo-row__date">{{getFormattedDate(data.dueDate)}}</p>
+    <span class="todo-row__description">{{data.description}}</span>
+    <span *ngIf="data.dueDate" class="todo-row__date">{{getFormattedDate(data.dueDate)}}</span>
 </div>

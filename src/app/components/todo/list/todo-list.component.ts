@@ -74,4 +74,43 @@ export class TodoListComponent implements OnInit {
                 }
             });
     }
+
+    /**
+     * returns a sorted list of only the OVERDUE items
+     */
+    get overdueList(): Todo[] {
+        return this.sorted(this.list
+            .filter((item) => item.status === TodoStatus.OVERDUE));
+    }
+
+    /**
+     * returns a sorted list of only the COMPLETE items
+     */
+    get completedList(): Todo[] {
+        return this.sorted(this.list
+            .filter((item) => item.status === TodoStatus.COMPLETE));
+    }
+
+    /**
+     * returns a sorted list of only the ONTRACK items
+     */
+    get ontrackList(): Todo[] {
+        return this.sorted(this.list
+            .filter((item) => item.status === TodoStatus.ONTRACK));
+    }
+
+    /**
+     * sorts a Todo[] by due date, earliest first and null dates at the end
+     */
+    sorted(templist: Todo[]): Todo[] {
+        return templist.sort((itemA, itemB) => {
+            if (!itemA.dueDate) {
+                return 1;
+            }
+            if (!itemB.dueDate) {
+                return -1;
+            }
+            return moment(itemA.dueDate).isBefore(itemB.dueDate) ? -1 : 0;
+        });
+    }
 }

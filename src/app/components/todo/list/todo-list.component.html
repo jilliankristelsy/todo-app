@@ -1,6 +1,18 @@
 <div class="list-container">
     <ul class="list">
-        <li *ngFor="let item of list">
+        <!--overdue-->
+        <li *ngFor="let item of overdueList">
+            <app-todo-row [data]="item"
+                          (finishTodo)="finishTodoItem($event)"
+            ></app-todo-row>
+        </li>
+        <!--ontrack-->
+        <li *ngFor="let item of ontrackList">
+            <app-todo-row [data]="item"
+                          (finishTodo)="finishTodoItem($event)"
+            ></app-todo-row>
+        </li>
+        <li *ngFor="let item of completedList">
             <app-todo-row [data]="item"
                           (finishTodo)="finishTodoItem($event)"
             ></app-todo-row>
