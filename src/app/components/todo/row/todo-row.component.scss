@@ -7,6 +7,18 @@
         justify-content: flex-start;
         padding: 0 12px 0 8px;
 
+        &--complete {
+            background-color: #94f38c;
+
+            .todo-row__description {
+                text-decoration: line-through;
+            }
+        }
+
+        &--overdue {
+            background-color: #ec868c;
+        }
+
         &__action {
             margin-right: 8px;
         }
