@@ -39,7 +39,7 @@ ul {
     > .loader {
         display: block;
     }
-    :not(> .loader) {
+    :not(.loader) {
         opacity: 70%;
         pointer-events: none;
     }
