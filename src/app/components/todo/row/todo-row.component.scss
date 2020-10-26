@@ -1,0 +1,24 @@
+:host {
+    .todo-row {
+        align-items: center;
+        background-color: #e4e2e8;
+        display: flex;
+        min-height: 40px;
+        justify-content: flex-start;
+        padding: 0 12px 0 8px;
+
+        &__action {
+            margin-right: 8px;
+        }
+
+        &__description {
+            flex-grow: 1;
+            margin-right: 8px;
+        }
+
+        &__date {
+            border: 1px solid black;
+            padding: 4px;
+        }
+    }
+}

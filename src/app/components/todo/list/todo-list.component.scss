@@ -1,0 +1,17 @@
+:host {
+    .list-container {
+        display: flex;
+        justify-content: center;
+
+        .list {
+            list-style: none;
+            width: 400px;
+
+            li {
+                &:not(:last-child) {
+                    margin-bottom: 8px;
+                }
+            }
+        }
+    }
+}

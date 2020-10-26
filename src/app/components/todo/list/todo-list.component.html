@@ -1,5 +1,8 @@
-<ul>
-    <li *ngFor="let item of list">
-        <app-todo-row [data]="item"></app-todo-row>
-    </li>
-</ul>
+<div class="list-container">
+    <ul class="list">
+        <li *ngFor="let item of list">
+            <app-todo-row [data]="item"></app-todo-row>
+        </li>
+    </ul>
+</div>
+
